@@ -1,0 +1,47 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Set vucUdvikling cookie</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="../library/css/styles.css" type="text/css" />
+
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="col-xs-12">
+
+                <h1>Set vucUdvikling cookie</h1>
+
+                <h2>Forklaring</h2>
+
+                <p>
+                    Denne side sætter cookie'en "vucUdvikling" på klient PC'en, således at google analytics kan slås fra. 
+                </p>
+
+                <p>
+                    Forneden kan ses om cookien eksistere eller ej.
+                </p>
+
+                <h2>Cookiestatus</h2>
+
+                <div id="cookieStatus"></div>
+
+            </div>
+        </div>
+        <script src="../library/vendor_scripts.js"></script>
+        <script src="../library/custom_scripts.js"></script>
+        <script type="text/javascript">
+            cookieClass.setCookie('vucUdvikling', 'Follow the white rabbit...', 30);  // Set a new cookie!
+            $('#cookieStatus').html( 'Cookie "vucUdvikling" ' + ((cookieClass.existCookie('vucUdvikling'))? '<span class="label label-success">eksistere</span>' : '<span class="label label-danger">eksistere ikke</span>' ) );  // Test if the cookie exist.
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                one_line_footer();
+            });
+        </script>
+    </body>
+
+</html>
