@@ -18,7 +18,7 @@
                 <h2>Forklaring</h2>
 
                 <p>
-                    Denne side sætter cookie'en "vucUdvikling" på klient PC'en, således at google analytics kan slås fra. 
+                    Denne side sætter cookie'en "vucUdvikling" på klient PC'en, således at google analytics kan slås fra. Cookie'en vil være aktiv i et år.
                 </p>
 
                 <p>
@@ -29,13 +29,40 @@
 
                 <div id="cookieStatus"></div>
 
+                <br>
+
+                <h2>Fjern cookie</h2>
+
+                <p>
+                    Tryk på nedenstående knap for at slette cookien "vucUdvikling".
+                </p>
+
+                <span class="RemoveCookie btn btn-lg btn-info"> Slet cookie </span>
+
             </div>
         </div>
         <script src="../library/vendor_scripts.js"></script>
         <script src="../library/custom_scripts.js"></script>
         <script type="text/javascript">
-            cookieClass.setCookie('vucUdvikling', 'Follow the white rabbit...', 30);  // Set a new cookie!
-            $('#cookieStatus').html( 'Cookie "vucUdvikling" ' + ((cookieClass.existCookie('vucUdvikling'))? '<span class="label label-success">eksistere</span>' : '<span class="label label-danger">eksistere ikke</span>' ) );  // Test if the cookie exist.
+
+            function showCookieStatus(num){
+                console.log('showCookieStatus: ' + num);
+                $('#cookieStatus').html( 'Cookie "vucUdvikling" ' + ((cookieClass.existCookie('vucUdvikling'))? '<span class="label label-success">eksisterer</span>' : '<span class="label label-danger">eksisterer ikke</span>' ) );  // Test if the cookie exist.
+            }
+
+            cookieClass.setCookie('vucUdvikling', 'Follow the white rabbit...', 365);  // Set a new cookie!
+
+            
+            $( document ).on('click', ".RemoveCookie", function(event){
+                cookieClass.deleteCookie('vucUdvikling');
+                showCookieStatus(1);
+            });
+
+
+            $(document).ready(function() {
+                showCookieStatus(2);
+            });
+
         </script>
         <script type="text/javascript">
             $(document).ready(function() {
