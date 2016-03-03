@@ -1,0 +1,78 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Set vucUdvikling cookie</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="library/css/styles.css" type="text/css" />
+
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="col-xs-12">
+
+                <h1>Set vucUdvikling cookie</h1>
+
+                <h2>Vigtig note</h2>
+
+                <p>Denne fil ligger i roden på vucdigital.dk som midlertidig test, og virker i Firefox. Firefox er ikke "glad" for den nuværnde "path" i cookien, som angiver roden ("path=/") men sættes i undermappen "kvuc_vucUdvikling" (dvs. "path=/kvuc_vucUdvikling"), hvilket muligvis er årsagen til at Firefox ikke korrekt detektere cookien i <a href="kvuc_vucUdvikling/kvuc_vucUdvikling.html" target="_blank">https://www.vucdigital.dk/kvuc_vucUdvikling/kvuc_vucUdvikling.html</a>.</p>
+
+                <h2>Forklaring</h2>
+
+                <p>
+                    Denne side sætter cookie'en "vucUdvikling" på klient PC'en, således at google analytics kan slås fra. Cookie'en vil være aktiv i et år.
+                </p>
+
+                <p>
+                    Forneden kan ses om cookien eksisterer eller ej.
+                </p>
+
+                <h2>Cookiestatus</h2>
+
+                <div id="cookieStatus"></div>
+
+                <br>
+
+                <h2>Fjern cookie</h2>
+
+                <p>
+                    Tryk på nedenstående knap for at slette cookien "vucUdvikling".
+                </p>
+
+                <span class="RemoveCookie btn btn-lg btn-info"> Slet cookie </span>
+
+            </div>
+        </div>
+        <script src="library/vendor_scripts.js"></script>
+        <script src="library/custom_scripts.js"></script>
+        <script type="text/javascript">
+
+            function showCookieStatus(num){
+                console.log('showCookieStatus: ' + num);
+                $('#cookieStatus').html( 'Cookie "vucUdvikling" ' + ((cookieClass.existCookie('vucUdvikling'))? '<span class="label label-success">eksisterer</span>' : '<span class="label label-danger">eksisterer ikke</span>' ) );  // Test if the cookie exist.
+            }
+
+            cookieClass.setCookie('vucUdvikling', 'Follow the white rabbit...', 365);  // Set a new cookie!
+
+            
+            $( document ).on('click', ".RemoveCookie", function(event){
+                cookieClass.deleteCookie('vucUdvikling');
+                showCookieStatus(1);
+            });
+
+
+            $(document).ready(function() {
+                showCookieStatus(2);
+            });
+
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                one_line_footer();
+            });
+        </script>
+    </body>
+
+</html>
